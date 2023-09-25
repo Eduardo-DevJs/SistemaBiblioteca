@@ -374,7 +374,7 @@ public class TelaCadastroLivro extends javax.swing.JFrame {
         }
     }
 
-    private void listarLivros() {
+    private void listarLivros(){
         try {
             LivroBiblioteca livroBiblioteca = new LivroBiblioteca();
 
