@@ -2,7 +2,8 @@ package VIEW.telaCadastroLivro;
 
 import DAO.LivroBiblioteca;
 import MODEL.Livros;
-import VIEW.MensagemLivroSucesso.livroCadastroSucesso;
+import VIEW.MensagemEditadoSucesso.LivroEditadoSucesso;
+import VIEW.MensagemLivroSucesso.LivroCadastroSucesso;
 import VIEW.MenuOpcoes.menuOpcoes;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
@@ -43,6 +44,7 @@ public class TelaCadastroLivro extends javax.swing.JFrame {
         txtCodigo = new javax.swing.JTextField();
         btnMostraLivros1 = new javax.swing.JButton();
         btnDeletarLivro = new javax.swing.JToggleButton();
+        btnEditar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -134,7 +136,7 @@ public class TelaCadastroLivro extends javax.swing.JFrame {
         });
 
         btnCarregarCampos.setBackground(new java.awt.Color(0, 51, 51));
-        btnCarregarCampos.setFont(new java.awt.Font("Liberation Sans", 1, 24)); // NOI18N
+        btnCarregarCampos.setFont(new java.awt.Font("Liberation Sans", 1, 18)); // NOI18N
         btnCarregarCampos.setForeground(new java.awt.Color(255, 255, 255));
         btnCarregarCampos.setText("CARREGAR CAMPOS");
         btnCarregarCampos.addActionListener(new java.awt.event.ActionListener() {
@@ -150,7 +152,7 @@ public class TelaCadastroLivro extends javax.swing.JFrame {
         txtCodigo.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
 
         btnMostraLivros1.setBackground(new java.awt.Color(0, 153, 0));
-        btnMostraLivros1.setFont(new java.awt.Font("Liberation Sans", 1, 24)); // NOI18N
+        btnMostraLivros1.setFont(new java.awt.Font("Liberation Sans", 1, 18)); // NOI18N
         btnMostraLivros1.setForeground(new java.awt.Color(255, 255, 255));
         btnMostraLivros1.setText("LIMPAR CAMPOS");
         btnMostraLivros1.addActionListener(new java.awt.event.ActionListener() {
@@ -169,6 +171,16 @@ public class TelaCadastroLivro extends javax.swing.JFrame {
             }
         });
 
+        btnEditar.setBackground(new java.awt.Color(0, 153, 0));
+        btnEditar.setFont(new java.awt.Font("Liberation Sans", 1, 18)); // NOI18N
+        btnEditar.setForeground(new java.awt.Color(255, 255, 255));
+        btnEditar.setText("EDITAR CAMPOS");
+        btnEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditarbtnLimparCampos(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -179,7 +191,7 @@ public class TelaCadastroLivro extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -205,11 +217,12 @@ public class TelaCadastroLivro extends javax.swing.JFrame {
                                                     .addComponent(jLabel5)))
                                             .addComponent(txtEditora)))
                                     .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGap(499, 499, 499)
                                         .addComponent(btnCarregarCampos)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(btnMostraLivros1)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(btnEditar)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(btnDeletarLivro)))
                                 .addGap(0, 0, Short.MAX_VALUE))
                             .addComponent(jScrollPane1))
@@ -225,13 +238,13 @@ public class TelaCadastroLivro extends javax.swing.JFrame {
                         .addGap(436, 436, 436)
                         .addComponent(jLabel1))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(521, 521, 521)
+                        .addGap(522, 522, 522)
                         .addComponent(btnCadastrar)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(btnVoltarAoMenu)
-                .addGap(17, 17, 17))
+                .addGap(14, 14, 14))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -271,18 +284,19 @@ public class TelaCadastroLivro extends javax.swing.JFrame {
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtAutorLivro, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(4, 4, 4)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCarregarCampos)
                     .addComponent(btnMostraLivros1)
-                    .addComponent(btnDeletarLivro))
-                .addGap(18, 18, 18)
+                    .addComponent(btnDeletarLivro)
+                    .addComponent(btnEditar))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnCadastrar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addComponent(btnVoltarAoMenu)
-                .addContainerGap(36, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -329,9 +343,28 @@ public class TelaCadastroLivro extends javax.swing.JFrame {
     }//GEN-LAST:event_btnLimparCampos
 
     private void btnDeletarLivroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeletarLivroActionPerformed
-        // TODO add your handling code here:
+        // Chamando o metodo de exclusao               
         ExcluirLivro();
+        // Listando os livros apos deletar
+        listarLivros();
+        // Limpando os campos
+        limparCampos();
     }//GEN-LAST:event_btnDeletarLivroActionPerformed
+
+    private void btnEditarbtnLimparCampos(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarbtnLimparCampos
+        // TODO add your handling code here:
+        atulizarLivro();
+        
+        LivroEditadoSucesso livroEditadoSucesso = new LivroEditadoSucesso();
+        
+        livroEditadoSucesso.setVisible(true);
+        
+        dispose();
+        
+        listarLivros();
+        limparCampos();
+      
+    }//GEN-LAST:event_btnEditarbtnLimparCampos
 
     /**
      * @param args the command line arguments
@@ -367,7 +400,7 @@ public class TelaCadastroLivro extends javax.swing.JFrame {
             LivroBiblioteca livroBiblioteca = new LivroBiblioteca();
             livroBiblioteca.create(livros);
 
-            livroCadastroSucesso livroCadastroSucesso = new livroCadastroSucesso();
+            LivroCadastroSucesso livroCadastroSucesso = new LivroCadastroSucesso();
             livroCadastroSucesso.setVisible(true);
 
             dispose();
@@ -425,21 +458,55 @@ public class TelaCadastroLivro extends javax.swing.JFrame {
         txtBloco.setText("");
         txtTituloLivro.requestFocus();
     }
+    
+    private void atulizarLivro(){
+        int id_livro, anoPublicacao ,id_bloco;
+        String titulo, autor, dataCadastro, editora;
+        
+        id_livro = Integer.parseInt(txtCodigo.getText());
+        titulo = txtTituloLivro.getText();
+        autor = txtAutorLivro.getText();
+        dataCadastro = txtDataCadastro.getText();
+        anoPublicacao = Integer.parseInt(txtAnoPublicacao.getText());
+        editora = txtEditora.getText();
+        id_bloco = Integer.parseInt(txtBloco.getText());
+        
+        Livros livros = new Livros();
+        livros.setId_livro(id_livro);
+        
+        livros.setTitulo_livro(titulo);
+        livros.setAutor_livro(autor);
+        livros.setData_cadastro(dataCadastro);
+        livros.setAnoPublicacao(anoPublicacao);
+        livros.setEditora(editora);
+        livros.setBloco(id_bloco);
+        
+        LivroBiblioteca livroBiblioteca = new LivroBiblioteca();
+        livroBiblioteca.AtualizarLivros(livros);
+    }
 
     private void ExcluirLivro() {
-        DefaultTableModel model = (DefaultTableModel) tabelaLivros.getModel();
+        int id_livro;
         
-        int setar = tabelaLivros.getSelectedRow();
-
+        id_livro = Integer.parseInt(txtCodigo.getText());
+        
+        // Instanciando modelo (classe)
+        Livros livros = new Livros();
+        livros.setId_livro(id_livro);
+        
+        
+        // Instanciado o livro DAO onde ocorre os metodos de CRUD
         LivroBiblioteca livroBiblioteca = new LivroBiblioteca();
-
-        livroBiblioteca.DeletarLivro(setar);
+        livroBiblioteca.DeletarLivro(id_livro);
     }
+    
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCadastrar;
     private javax.swing.JButton btnCarregarCampos;
     private javax.swing.JToggleButton btnDeletarLivro;
+    private javax.swing.JButton btnEditar;
     private javax.swing.JButton btnMostraLivros1;
     private javax.swing.JButton btnVoltarAoMenu;
     private javax.swing.JLabel jLabel1;

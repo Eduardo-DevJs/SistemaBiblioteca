@@ -16,7 +16,7 @@ public class Conexao {
 
     private static final String DATABASE = "jdbc:mysql://localhost:3306/bd_biblioteca";
     private static final String USER = "root";
-    private static final String PASSWORD = "";
+    private static final String PASSWORD = "root123";
 
     public static Connection createConnectionMySQL() throws Exception {
         Connection connection = DriverManager.getConnection(DATABASE, USER, PASSWORD);

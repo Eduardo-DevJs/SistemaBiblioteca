@@ -1,7 +1,7 @@
 package DAO;
 
 import MODEL.Livros;
-import VIEW.MensagemLivroSucesso.livroCadastroSucesso;
+import VIEW.MensagemLivroSucesso.LivroCadastroSucesso;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.PreparedStatement;
@@ -72,7 +72,7 @@ public class LivroBiblioteca {
     
     
    public void AtualizarLivros(Livros livros){
-       String sql = "UPDATE livros SET titulo = ?, autor = ?,  data_cadastro=?, ano_publicacao=?, editora=?, id_bloco=? WHERE id_livro";
+       String sql = "UPDATE livros SET titulo = ?, autor = ?,  data_cadastro=?, ano_publicacao=?, editora=?, id_bloco=? WHERE id_livro=?";
        
        Connection connection = null;
        PreparedStatement preparedStatement = null;
