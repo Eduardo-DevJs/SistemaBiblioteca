@@ -96,4 +96,24 @@ public class LivroBiblioteca {
            System.out.println("Erro:  " + e);
        }
    }
+   
+   public void DeletarLivro(int id){
+       String sql = "DELETE FROM livros WHERE id_livro =?";
+       
+       Connection connection = null;
+       PreparedStatement preparedStatement = null;
+       
+       try {
+           connection = CONEXAO.Conexao.createConnectionMySQL();
+           preparedStatement = connection.prepareStatement(sql);
+           
+           preparedStatement.setInt(1, id);
+           
+           preparedStatement.execute();
+           
+          
+       } catch (Exception e) {
+           System.out.println("Erro " + e);
+       }
+   }
 }
