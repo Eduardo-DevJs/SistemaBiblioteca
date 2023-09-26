@@ -2,21 +2,21 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package VIEW.MensagemLivroSucesso;
+package VIEW.MensagensDeSucesso;
 
 import VIEW.MenuOpcoes.menuOpcoes;
-import VIEW.telaCadastroLivro.TelaCadastroLivro;
+import VIEW.telaCadastroLeitor.TelaCadastroLeitor;
 
 /**
  *
  * @author dudu
  */
-public class LivroCadastroSucesso extends javax.swing.JFrame {
+public class LeitorCadastradoSucesso extends javax.swing.JFrame {
 
     /**
-     * Creates new form livroCadastroSucesso
+     * Creates new form LeitorCadastradoSucesso
      */
-    public LivroCadastroSucesso() {
+    public LeitorCadastradoSucesso() {
         initComponents();
     }
 
@@ -29,23 +29,22 @@ public class LivroCadastroSucesso extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         btnVoltarAoCadastro = new javax.swing.JButton();
         btnVoltarMenu = new javax.swing.JToggleButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        setTitle("Leitor cadastro sucesso");
+        setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel1.setFont(new java.awt.Font("Liberation Sans", 0, 40)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 153, 0));
-        jLabel1.setText("Livro cadastrado com sucesso!");
+        jLabel1.setText("Leitor cadastrado com sucesso!");
 
         btnVoltarAoCadastro.setBackground(new java.awt.Color(102, 102, 102));
         btnVoltarAoCadastro.setFont(new java.awt.Font("Liberation Sans", 1, 24)); // NOI18N
         btnVoltarAoCadastro.setForeground(new java.awt.Color(255, 255, 255));
-        btnVoltarAoCadastro.setText("Voltar ao cadastro do Livro");
+        btnVoltarAoCadastro.setText("Voltar ao cadastro do Leitor");
         btnVoltarAoCadastro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnVoltarAoCadastroActionPerformed(evt);
@@ -61,49 +60,31 @@ public class LivroCadastroSucesso extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(205, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(207, 207, 207))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(btnVoltarAoCadastro)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnVoltarMenu)
-                        .addGap(27, 27, 27))))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(138, 138, 138)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 140, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnVoltarAoCadastro)
-                    .addComponent(btnVoltarMenu))
-                .addGap(15, 15, 15))
-        );
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnVoltarAoCadastro)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnVoltarMenu)
                 .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(185, 185, 185)
+                .addComponent(jLabel1)
+                .addContainerGap(182, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(123, 123, 123)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 122, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnVoltarAoCadastro)
+                    .addComponent(btnVoltarMenu))
+                .addGap(30, 30, 30))
         );
 
         pack();
@@ -111,8 +92,8 @@ public class LivroCadastroSucesso extends javax.swing.JFrame {
 
     private void btnVoltarAoCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarAoCadastroActionPerformed
         // TODO add your handling code here:
-        TelaCadastroLivro telaCadastroLivro = new TelaCadastroLivro();
-        telaCadastroLivro.setVisible(true);
+        TelaCadastroLeitor telaCadastroLeitor = new TelaCadastroLeitor();
+        telaCadastroLeitor.setVisible(true);
         
         dispose();
     }//GEN-LAST:event_btnVoltarAoCadastroActionPerformed
@@ -120,9 +101,9 @@ public class LivroCadastroSucesso extends javax.swing.JFrame {
     private void btnVoltarMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarMenuActionPerformed
         // TODO add your handling code here:
         menuOpcoes meOpcoes = new menuOpcoes();
-        
+
         meOpcoes.setVisible(true);
-        
+
         dispose();
     }//GEN-LAST:event_btnVoltarMenuActionPerformed
 
@@ -143,21 +124,20 @@ public class LivroCadastroSucesso extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(LivroCadastroSucesso.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LeitorCadastradoSucesso.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(LivroCadastroSucesso.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LeitorCadastradoSucesso.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(LivroCadastroSucesso.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LeitorCadastradoSucesso.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(LivroCadastroSucesso.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LeitorCadastradoSucesso.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new LivroCadastroSucesso().setVisible(true);
+                new LeitorCadastradoSucesso().setVisible(true);
             }
         });
     }
@@ -166,6 +146,5 @@ public class LivroCadastroSucesso extends javax.swing.JFrame {
     private javax.swing.JButton btnVoltarAoCadastro;
     private javax.swing.JToggleButton btnVoltarMenu;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }

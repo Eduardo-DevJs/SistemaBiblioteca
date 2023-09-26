@@ -1,7 +1,7 @@
 package DAO;
 
 import MODEL.Livros;
-import VIEW.MensagemLivroSucesso.LivroCadastroSucesso;
+import VIEW.MensagensDeSucesso.LivroCadastroSucesso;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.PreparedStatement;
