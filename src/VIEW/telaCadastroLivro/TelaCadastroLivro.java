@@ -3,7 +3,7 @@ package VIEW.telaCadastroLivro;
 import DAO.LivroBiblioteca;
 import MODEL.Livros;
 import VIEW.MensagemEditadoSucesso.LivroEditadoSucesso;
-import VIEW.MensagemLivroSucesso.LivroCadastroSucesso;
+import VIEW.MensagensDeSucesso.LivroCadastroSucesso;
 import VIEW.MenuOpcoes.menuOpcoes;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
@@ -353,7 +353,7 @@ public class TelaCadastroLivro extends javax.swing.JFrame {
 
     private void btnEditarbtnLimparCampos(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarbtnLimparCampos
         // TODO add your handling code here:
-        atulizarLivro();
+        atualizarLivro();
         
         LivroEditadoSucesso livroEditadoSucesso = new LivroEditadoSucesso();
         
@@ -459,7 +459,7 @@ public class TelaCadastroLivro extends javax.swing.JFrame {
         txtTituloLivro.requestFocus();
     }
     
-    private void atulizarLivro(){
+    private void atualizarLivro(){
         int id_livro, anoPublicacao ,id_bloco;
         String titulo, autor, dataCadastro, editora;
         
