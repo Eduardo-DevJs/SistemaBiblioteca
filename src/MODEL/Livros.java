@@ -5,6 +5,7 @@ public class Livros {
     private int id_livro;
     private String titulo_livro;
     private String autor_livro;
+    private String genero;
     private String data_cadastro;
     private int anoPublicacao;
     private String editora;
@@ -14,15 +15,18 @@ public class Livros {
         
     }
 
-    public Livros(int id_livro, String titulo_livro, String autor_livro, String data_cadastro, int anoPublicacao, String editora, int bloco) {
+    public Livros(int id_livro, String titulo_livro, String autor_livro, String genero, String data_cadastro, int anoPublicacao, String editora, int bloco) {
         this.id_livro = id_livro;
         this.titulo_livro = titulo_livro;
         this.autor_livro = autor_livro;
+        this.genero = genero;
         this.data_cadastro = data_cadastro;
         this.anoPublicacao = anoPublicacao;
         this.editora = editora;
         this.bloco = bloco;
     }
+    
+    
 
     public int getId_livro() {
         return id_livro;
@@ -80,6 +84,13 @@ public class Livros {
         this.bloco = bloco;
     }
 
+    public String getGenero(){
+        return genero;
+    }
+    
+    public void setGenero(String genero){
+        this.genero = genero;              
+    }
     
     
 }

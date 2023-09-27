@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
 
-public class LeitorDAO {
+public class LeitorBiblioteca {
 
     public void cadastrarLeitor(Leitor leitor) {
         String sql = "INSERT INTO leitores (nome, cpf ,telefone, data_cadastro, email) VALUES (?,?,?,?,?)";
@@ -52,6 +52,7 @@ public class LeitorDAO {
             while (resultSet.next()) {
                 Leitor leitor = new Leitor();
 
+                leitor.setId_leitor(resultSet.getInt("id_leitor"));
                 leitor.setNome(resultSet.getString("nome"));
                 leitor.setCpf(resultSet.getString("cpf"));
                 leitor.setTelefone(resultSet.getString("telefone"));
