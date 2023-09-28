@@ -87,7 +87,8 @@ public class LeitorCadastradoSucesso extends javax.swing.JFrame {
                 .addGap(30, 30, 30))
         );
 
-        pack();
+        setSize(new java.awt.Dimension(941, 375));
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnVoltarAoCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarAoCadastroActionPerformed
