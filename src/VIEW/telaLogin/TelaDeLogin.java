@@ -173,8 +173,8 @@ public class TelaDeLogin extends javax.swing.JFrame {
     
     public void logar() {
         try {
-            String nomeUsuario = txtNomeUsuario.getText();
-            String senhaUsuario = txtSenhaUsuario.getText();
+            String nomeUsuario = txtNomeUsuario.getText().toLowerCase();
+            String senhaUsuario = txtSenhaUsuario.getText().toLowerCase();
 
             if (nomeUsuario.isEmpty() && senhaUsuario.isEmpty()) {
                 JOptionPane.showMessageDialog(null, "Por favor, prencha todos os campos");
