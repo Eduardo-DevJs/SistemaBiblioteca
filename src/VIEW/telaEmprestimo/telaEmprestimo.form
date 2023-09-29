@@ -232,7 +232,7 @@
         </Container>
         <Component class="javax.swing.JButton" name="jButton1">
           <Properties>
-            <Property name="text" type="java.lang.String" value="CARREGAR CAMPOS"/>
+            <Property name="text" type="java.lang.String" value="MOSTRAR EMPRESTIMOS"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JButton" name="jButton2">

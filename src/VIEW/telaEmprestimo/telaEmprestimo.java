@@ -84,7 +84,7 @@ public class telaEmprestimo extends javax.swing.JFrame {
         jTable1.setRowHeight(30);
         jScrollPane1.setViewportView(jTable1);
 
-        jButton1.setText("CARREGAR CAMPOS");
+        jButton1.setText("MOSTRAR EMPRESTIMOS");
 
         jButton2.setText("LIMPAR CAMPOS");
 
