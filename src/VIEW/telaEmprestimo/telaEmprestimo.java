@@ -5,7 +5,9 @@
 package VIEW.telaEmprestimo;
 
 import DAO.EmprestimoBiblioteca;
+import DAO.LeitorBiblioteca;
 import MODEL.Emprestimo;
+import MODEL.Leitor;
 import VIEW.MenuOpcoes.menuOpcoes;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -387,24 +389,30 @@ public class telaEmprestimo extends javax.swing.JFrame {
     }
 
     private void createEmprestimo() {
-        EmprestimoBiblioteca emprestimoBiblioteca = new EmprestimoBiblioteca();
-        Emprestimo emprestimo = new Emprestimo();
+        try { 
+            EmprestimoBiblioteca emprestimoBiblioteca = new EmprestimoBiblioteca();
+            Emprestimo emprestimo = new Emprestimo();
 
-        String nomeLeitor = txtNomeLeitor.getText();
-        String nomeLivro = txtNomeLivro.getText();
-        String data_devolucao = txtDataDevolucao.getText();
-        String data_emprestimo = txtDataEmprestimo.getText();
-        int id_leitor = Integer.parseInt(txtCodigoLeitor.getText());
-        int id_livro = Integer.parseInt(txtCodigoLeitor.getText());
+            String nomeLeitor = txtNomeLeitor.getText();
+            String nomeLivro = txtNomeLivro.getText();
+            String data_devolucao = txtDataDevolucao.getText();
+            String data_emprestimo = txtDataEmprestimo.getText();
+            int id_leitor = Integer.parseInt(txtCodigoLeitor.getText());
+            int id_livro = Integer.parseInt(txtCodigoLeitor.getText());
+            
+            emprestimo.setId_livro(id_livro);
+            emprestimo.setData_emprestimo(data_emprestimo);
+            emprestimo.setData_devolucao(data_devolucao);
+            emprestimo.setId_leitor(id_leitor);
+            emprestimo.setNome_livro(nomeLivro);
+            emprestimo.setNome_leitor(nomeLeitor);
 
-        emprestimo.setId_livro(id_livro);
-        emprestimo.setData_emprestimo(data_emprestimo);
-        emprestimo.setData_devolucao(data_devolucao);
-        emprestimo.setId_leitor(id_leitor);
-        emprestimo.setNome_livro(nomeLivro);
-        emprestimo.setNome_leitor(nomeLeitor);
+            emprestimoBiblioteca.createEmprestimo(emprestimo);
 
-        emprestimoBiblioteca.createEmprestimo(emprestimo);
+        } catch (Exception e) {
+            System.out.println("Erro ao criar Emprestimo" + e);
+        }
+
     }
 
     private void carregarCampos() {
@@ -414,13 +422,13 @@ public class telaEmprestimo extends javax.swing.JFrame {
             if (linhaSelecionada < 0) {
                 JOptionPane.showMessageDialog(null, "Por favor, selecione uma linha");
             } else {
-               txtCodigoEmprestimo.setText(tabelaEmprestimo.getModel().getValueAt(linhaSelecionada, 0).toString());
-               txtNomeLeitor.setText(tabelaEmprestimo.getModel().getValueAt(linhaSelecionada, 1).toString());
-               txtNomeLivro.setText(tabelaEmprestimo.getModel().getValueAt(linhaSelecionada,2).toString());
-               txtDataEmprestimo.setText(tabelaEmprestimo.getModel().getValueAt(linhaSelecionada, 3).toString());
-               txtCodigoLivro.setText(tabelaEmprestimo.getModel().getValueAt(linhaSelecionada, 4).toString());
-               txtCodigoLeitor.setText(tabelaEmprestimo.getModel().getValueAt(linhaSelecionada, 5).toString());
-               txtDataDevolucao.setText(tabelaEmprestimo.getModel().getValueAt(linhaSelecionada, 6).toString());
+                txtCodigoEmprestimo.setText(tabelaEmprestimo.getModel().getValueAt(linhaSelecionada, 0).toString());
+                txtNomeLeitor.setText(tabelaEmprestimo.getModel().getValueAt(linhaSelecionada, 1).toString());
+                txtNomeLivro.setText(tabelaEmprestimo.getModel().getValueAt(linhaSelecionada, 2).toString());
+                txtDataEmprestimo.setText(tabelaEmprestimo.getModel().getValueAt(linhaSelecionada, 3).toString());
+                txtCodigoLivro.setText(tabelaEmprestimo.getModel().getValueAt(linhaSelecionada, 4).toString());
+                txtCodigoLeitor.setText(tabelaEmprestimo.getModel().getValueAt(linhaSelecionada, 5).toString());
+                txtDataDevolucao.setText(tabelaEmprestimo.getModel().getValueAt(linhaSelecionada, 6).toString());
             }
         } catch (Exception e) {
             System.out.println("Erro ao carregar campos: " + e);
