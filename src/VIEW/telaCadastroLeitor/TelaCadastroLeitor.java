@@ -38,7 +38,7 @@ public class TelaCadastroLeitor extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        txtCodigoLeitor = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         txtTelefone = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
@@ -54,6 +54,7 @@ public class TelaCadastroLeitor extends javax.swing.JFrame {
         btnCadastrarLeitor = new javax.swing.JButton();
         btnLimparCampos = new javax.swing.JButton();
         bntVoltarAoMenu = new javax.swing.JButton();
+        btnCarregarLeitores = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Cadastro do Leitor");
@@ -67,9 +68,9 @@ public class TelaCadastroLeitor extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
         jLabel2.setText("Codigo do Leitor");
 
-        jTextField1.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
-        jTextField1.setEnabled(false);
-        jTextField1.setMargin(new java.awt.Insets(2, 12, 2, 6));
+        txtCodigoLeitor.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
+        txtCodigoLeitor.setEnabled(false);
+        txtCodigoLeitor.setMargin(new java.awt.Insets(2, 12, 2, 6));
 
         jLabel3.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
         jLabel3.setText("Telefone");
@@ -149,6 +150,16 @@ public class TelaCadastroLeitor extends javax.swing.JFrame {
             }
         });
 
+        btnCarregarLeitores.setBackground(new java.awt.Color(0, 0, 0));
+        btnCarregarLeitores.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
+        btnCarregarLeitores.setForeground(new java.awt.Color(255, 255, 255));
+        btnCarregarLeitores.setText("Carregar campos");
+        btnCarregarLeitores.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCarregarLeitoresActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -159,12 +170,12 @@ public class TelaCadastroLeitor extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtCodigoLeitor, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel4)
-                                .addGap(687, 854, Short.MAX_VALUE))
+                                .addGap(687, 860, Short.MAX_VALUE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(txtNomeLeitor)
                                 .addContainerGap())))
@@ -185,22 +196,25 @@ public class TelaCadastroLeitor extends javax.swing.JFrame {
                             .addComponent(txtCpf))
                         .addContainerGap())))
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(323, 323, 323)
-                .addComponent(jLabel1)
-                .addGap(0, 341, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(jScrollPane1))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(btnCadastrarLeitor)
-                        .addGap(256, 256, 256)
-                        .addComponent(bntVoltarAoMenu)
-                        .addGap(11, 11, 11))
-                    .addComponent(jScrollPane1)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addComponent(btnCarregarLeitores)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnLimparCampos))
+                            .addComponent(bntVoltarAoMenu, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnLimparCampos)))
-                .addContainerGap())
+                        .addComponent(btnCadastrarLeitor)
+                        .addGap(463, 463, 463))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(326, 326, 326))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -213,7 +227,7 @@ public class TelaCadastroLeitor extends javax.swing.JFrame {
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtCodigoLeitor, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtNomeLeitor, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel4)
@@ -238,14 +252,16 @@ public class TelaCadastroLeitor extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
-                .addComponent(btnLimparCampos)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 66, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnCadastrarLeitor)
-                    .addComponent(bntVoltarAoMenu))
-                .addGap(28, 28, 28))
+                    .addComponent(btnLimparCampos)
+                    .addComponent(btnCarregarLeitores))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnCadastrarLeitor)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(bntVoltarAoMenu)
+                .addContainerGap(44, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -265,7 +281,7 @@ public class TelaCadastroLeitor extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        setSize(new java.awt.Dimension(1097, 908));
+        setSize(new java.awt.Dimension(1097, 921));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -296,6 +312,21 @@ public class TelaCadastroLeitor extends javax.swing.JFrame {
         
         dispose();
     }//GEN-LAST:event_bntVoltarAoMenuActionPerformed
+
+    private void btnCarregarLeitoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCarregarLeitoresActionPerformed
+        int linhaSelecionada = tabelaLeitores.getSelectedRow();
+        
+        if(linhaSelecionada < 0){
+            JOptionPane.showMessageDialog(null,"Por favor, selecione uma linha");
+        }else{
+            txtCodigoLeitor.setText(tabelaLeitores.getModel().getValueAt(linhaSelecionada, 0).toString());
+            txtNomeLeitor.setText(tabelaLeitores.getModel().getValueAt(linhaSelecionada, 1).toString());
+            txtCpf.setText(tabelaLeitores.getModel().getValueAt(linhaSelecionada, 2).toString());
+            txtTelefone.setText(tabelaLeitores.getModel().getValueAt(linhaSelecionada, 3).toString());
+            txtEmail.setText(tabelaLeitores.getModel().getValueAt(linhaSelecionada, 4).toString());
+            txtDataCadastro.setText(tabelaLeitores.getModel().getValueAt(linhaSelecionada, 5).toString());
+        }
+    }//GEN-LAST:event_btnCarregarLeitoresActionPerformed
 
     /**
      * @param args the command line arguments
@@ -405,9 +436,8 @@ public class TelaCadastroLeitor extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bntVoltarAoMenu;
     private javax.swing.JButton btnCadastrarLeitor;
+    private javax.swing.JButton btnCarregarLeitores;
     private javax.swing.JButton btnLimparCampos;
-    private javax.swing.JButton btnVoltarAoMenu;
-    private javax.swing.JButton btnVoltarAoMenu1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -417,8 +447,8 @@ public class TelaCadastroLeitor extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JTable tabelaLeitores;
+    private javax.swing.JTextField txtCodigoLeitor;
     private javax.swing.JTextField txtCpf;
     private javax.swing.JTextField txtDataCadastro;
     private javax.swing.JTextField txtEmail;

@@ -119,7 +119,7 @@ public class TelaCadastroLivro extends javax.swing.JFrame {
                 {null, null, null, null, null, null, null, null},
             },
             new String [] {
-                "Codigo do Livro", "Titulo", "Autor", "Gênero", "Data de cadastro", "Ano de Publicacao", "Editora", "id_bloco"
+                "Codigo do Livro", "Titulo", "Autor", "Gênero", "Data de cadastro", "Ano de Publicacao", "Editora", "Sessão"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -508,6 +508,7 @@ public class TelaCadastroLivro extends javax.swing.JFrame {
 
         Livros livros = new Livros();
         livros.setId_livro(id_livro);
+        
 
         livros.setTitulo(titulo);
         livros.setAutor(autor);
