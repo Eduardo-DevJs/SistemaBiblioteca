@@ -6,6 +6,7 @@ package VIEW.MenuOpcoes;
 
 import VIEW.telaCadastroLeitor.TelaCadastroLeitor;
 import VIEW.telaCadastroLivro.TelaCadastroLivro;
+import VIEW.telaEmprestimo.telaEmprestimo;
 
 /**
  *
@@ -248,7 +249,11 @@ public class menuOpcoes extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCadastrarLeitorActionPerformed
 
     private void btnEmprestimoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEmprestimoActionPerformed
-        // TODO add your handling code here:
+        telaEmprestimo emprestimo = new telaEmprestimo();
+        
+        emprestimo.setVisible(true);
+        
+        dispose();
     }//GEN-LAST:event_btnEmprestimoActionPerformed
 
     /**

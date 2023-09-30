@@ -4,6 +4,11 @@
  */
 package VIEW.telaEmprestimo;
 
+import DAO.EmprestimoBiblioteca;
+import MODEL.Emprestimo;
+import VIEW.MenuOpcoes.menuOpcoes;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author eliria
@@ -15,6 +20,7 @@ public class telaEmprestimo extends javax.swing.JFrame {
      */
     public telaEmprestimo() {
         initComponents();
+        listarEmprestimos();
     }
 
     /**
@@ -33,13 +39,20 @@ public class telaEmprestimo extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         txtDataEmprestimo = new javax.swing.JTextField();
-        jToggleButton1 = new javax.swing.JToggleButton();
+        btnFinalizarEmprestimo = new javax.swing.JToggleButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tabelaEmprestimo = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
-        txtNomeLeitor3 = new javax.swing.JTextField();
+        txtCodigoEmprestimo = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        txtCodigoLivro = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
+        txtCodigoLeitor = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
+        txtDataDevolucao = new javax.swing.JTextField();
+        btnVoltarAoMenu = new javax.swing.JToggleButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Emprestimo ");
@@ -66,11 +79,16 @@ public class telaEmprestimo extends javax.swing.JFrame {
         txtDataEmprestimo.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
         txtDataEmprestimo.setMargin(new java.awt.Insets(2, 12, 2, 6));
 
-        jToggleButton1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jToggleButton1.setText("FINALIZAR");
+        btnFinalizarEmprestimo.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        btnFinalizarEmprestimo.setText("FINALIZAR");
+        btnFinalizarEmprestimo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFinalizarEmprestimoActionPerformed(evt);
+            }
+        });
 
-        jTable1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tabelaEmprestimo.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        tabelaEmprestimo.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -78,11 +96,11 @@ public class telaEmprestimo extends javax.swing.JFrame {
                 {null, null, null, null}
             },
             new String [] {
-                "Nome do Leitor", "Livro", "Data Cadastro",
+                "Codigo do emprestimo","Leitor", "Livro", "Data Emprestimo", "Data Devolucao", "Codigo do livro", "Codigo do Leitor"
             }
         ));
-        jTable1.setRowHeight(30);
-        jScrollPane1.setViewportView(jTable1);
+        tabelaEmprestimo.setRowHeight(30);
+        jScrollPane1.setViewportView(tabelaEmprestimo);
 
         jButton1.setText("MOSTRAR EMPRESTIMOS");
 
@@ -91,24 +109,57 @@ public class telaEmprestimo extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel4.setText("Codigo");
 
-        txtNomeLeitor3.setEditable(false);
-        txtNomeLeitor3.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
-        txtNomeLeitor3.setMargin(new java.awt.Insets(2, 12, 2, 6));
+        txtCodigoEmprestimo.setEditable(false);
+        txtCodigoEmprestimo.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
+        txtCodigoEmprestimo.setMargin(new java.awt.Insets(2, 12, 2, 6));
+
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel5.setText("Codigo do livro");
+
+        txtCodigoLivro.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
+        txtCodigoLivro.setMargin(new java.awt.Insets(2, 12, 2, 6));
+        txtCodigoLivro.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtCodigoLivroKeyTyped(evt);
+            }
+        });
+
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel6.setText("Codigo do Leitor");
+
+        txtCodigoLeitor.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
+        txtCodigoLeitor.setMargin(new java.awt.Insets(2, 12, 2, 6));
+        txtCodigoLeitor.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtCodigoLeitorKeyTyped(evt);
+            }
+        });
+
+        jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel7.setText("Data de devolução");
+
+        txtDataDevolucao.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
+        txtDataDevolucao.setMargin(new java.awt.Insets(2, 12, 2, 6));
+
+        btnVoltarAoMenu.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        btnVoltarAoMenu.setText("VOLTAR AO MENU");
+        btnVoltarAoMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVoltarAoMenuActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGap(17, 17, 17)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane1))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(17, 17, 17)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel4)
-                            .addComponent(txtNomeLeitor3, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtCodigoEmprestimo, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtNomeLeitor, javax.swing.GroupLayout.PREFERRED_SIZE, 366, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -117,22 +168,42 @@ public class telaEmprestimo extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel2)
-                                .addGap(0, 249, Short.MAX_VALUE))
+                                .addGap(0, 242, Short.MAX_VALUE))
                             .addComponent(txtNomeLivro))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel3)
                             .addComponent(txtDataEmprestimo, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jButton1)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel5)
+                            .addComponent(txtCodigoLivro, javax.swing.GroupLayout.PREFERRED_SIZE, 366, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton2)))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel6)
+                            .addComponent(txtCodigoLeitor, javax.swing.GroupLayout.PREFERRED_SIZE, 366, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel7)
+                            .addComponent(txtDataDevolucao, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addGap(20, 20, 20))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jToggleButton1)
-                .addGap(578, 578, 578))
+                .addContainerGap()
+                .addComponent(jScrollPane1)
+                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton2)
+                .addGap(11, 11, 11))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(568, 568, 568)
+                .addComponent(btnFinalizarEmprestimo)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnVoltarAoMenu)
+                .addGap(20, 20, 20))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -153,16 +224,36 @@ public class telaEmprestimo extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtNomeLeitor3, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
+                        .addComponent(txtCodigoEmprestimo, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel5)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtCodigoLivro, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel6)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtCodigoLeitor, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel7)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtDataDevolucao, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2)
-                    .addComponent(jButton1))
+                    .addComponent(jButton1)
+                    .addComponent(jButton2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(39, 39, 39)
-                .addComponent(jToggleButton1)
-                .addGap(23, 23, 23))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(26, 26, 26)
+                        .addComponent(btnFinalizarEmprestimo)
+                        .addGap(82, 82, 82))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnVoltarAoMenu)
+                        .addGap(49, 49, 49))))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -182,9 +273,36 @@ public class telaEmprestimo extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        setSize(new java.awt.Dimension(1339, 709));
+        setSize(new java.awt.Dimension(1339, 795));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void txtCodigoLivroKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCodigoLivroKeyTyped
+        String numeros = "0123456789";
+        if (!numeros.contains(evt.getKeyChar() + "")) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtCodigoLivroKeyTyped
+
+    private void txtCodigoLeitorKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCodigoLeitorKeyTyped
+        String numeros = "0123456789";
+        if (!numeros.contains(evt.getKeyChar() + "")) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtCodigoLeitorKeyTyped
+
+    private void btnFinalizarEmprestimoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFinalizarEmprestimoActionPerformed
+       createEmprestimo();
+       listarEmprestimos();
+    }//GEN-LAST:event_btnFinalizarEmprestimoActionPerformed
+
+    private void btnVoltarAoMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarAoMenuActionPerformed
+        menuOpcoes opcoes = new menuOpcoes();
+        
+        opcoes.setVisible(true);
+        
+        dispose();
+    }//GEN-LAST:event_btnVoltarAoMenuActionPerformed
 
     /**
      * @param args the command line arguments
@@ -221,20 +339,75 @@ public class telaEmprestimo extends javax.swing.JFrame {
         });
     }
 
+    private void listarEmprestimos (){
+        try {
+            EmprestimoBiblioteca emprestimoBiblioteca = new EmprestimoBiblioteca();
+            
+            DefaultTableModel model = (DefaultTableModel) tabelaEmprestimo.getModel();
+            
+            model.setNumRows(0);
+            
+            for(Emprestimo emprestimo : emprestimoBiblioteca.mostraEmprestimos()){
+                model.addRow(new Object[]{
+                    emprestimo.getId_emprestimo(),
+                    emprestimo.getNome_leitor(),
+                    emprestimo.getNome_livro(),
+                    emprestimo.getData_emprestimo(),
+                    emprestimo.getData_devolucao(),
+                    emprestimo.getId_leitor(),
+                    emprestimo.getId_livro()
+                });
+            }
+            
+            emprestimoBiblioteca.mostraEmprestimos();
+            
+        } catch (Exception e) {
+            System.out.println("Erro " + e);
+        }
+    }
+    
+    private void createEmprestimo(){
+         EmprestimoBiblioteca emprestimoBiblioteca = new EmprestimoBiblioteca();
+        Emprestimo emprestimo = new Emprestimo();
+        
+        String nomeLeitor = txtNomeLeitor.getText();
+        String nomeLivro = txtNomeLivro.getText();
+        String data_devolucao = txtDataDevolucao.getText();
+        String data_emprestimo = txtDataEmprestimo.getText();
+        int id_leitor = Integer.parseInt(txtCodigoLeitor.getText());
+        int id_livro = Integer.parseInt(txtCodigoLeitor.getText());
+        
+        emprestimo.setId_livro(id_livro);
+        emprestimo.setData_emprestimo(data_emprestimo);
+        emprestimo.setData_devolucao(data_devolucao);
+        emprestimo.setId_leitor(id_leitor);
+        emprestimo.setNome_livro(nomeLivro);
+        emprestimo.setNome_leitor(nomeLeitor);
+        
+        emprestimoBiblioteca.createEmprestimo(emprestimo);
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JToggleButton btnFinalizarEmprestimo;
+    private javax.swing.JToggleButton btnVoltarAoMenu;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JToggleButton jToggleButton1;
+    private javax.swing.JTable tabelaEmprestimo;
+    private javax.swing.JTextField txtCodigoEmprestimo;
+    private javax.swing.JTextField txtCodigoLeitor;
+    private javax.swing.JTextField txtCodigoLivro;
+    private javax.swing.JTextField txtDataDevolucao;
     private javax.swing.JTextField txtDataEmprestimo;
     private javax.swing.JTextField txtNomeLeitor;
-    private javax.swing.JTextField txtNomeLeitor3;
     private javax.swing.JTextField txtNomeLivro;
     // End of variables declaration//GEN-END:variables
 }
