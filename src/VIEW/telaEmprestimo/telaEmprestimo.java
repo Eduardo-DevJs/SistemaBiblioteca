@@ -7,6 +7,7 @@ package VIEW.telaEmprestimo;
 import DAO.EmprestimoBiblioteca;
 import MODEL.Emprestimo;
 import VIEW.MenuOpcoes.menuOpcoes;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -42,8 +43,8 @@ public class telaEmprestimo extends javax.swing.JFrame {
         btnFinalizarEmprestimo = new javax.swing.JToggleButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabelaEmprestimo = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btnCarregarCampos = new javax.swing.JButton();
+        btnLimparCampos = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         txtCodigoEmprestimo = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
@@ -102,9 +103,19 @@ public class telaEmprestimo extends javax.swing.JFrame {
         tabelaEmprestimo.setRowHeight(30);
         jScrollPane1.setViewportView(tabelaEmprestimo);
 
-        jButton1.setText("MOSTRAR EMPRESTIMOS");
+        btnCarregarCampos.setText("CARREGAR CAMPOS");
+        btnCarregarCampos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCarregarCamposActionPerformed(evt);
+            }
+        });
 
-        jButton2.setText("LIMPAR CAMPOS");
+        btnLimparCampos.setText("LIMPAR CAMPOS");
+        btnLimparCampos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLimparCamposActionPerformed(evt);
+            }
+        });
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel4.setText("Codigo");
@@ -188,22 +199,22 @@ public class telaEmprestimo extends javax.swing.JFrame {
                             .addComponent(txtDataDevolucao, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addGap(20, 20, 20))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1)
-                .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton2)
-                .addGap(11, 11, 11))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(568, 568, 568)
                 .addComponent(btnFinalizarEmprestimo)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnVoltarAoMenu)
                 .addGap(20, 20, 20))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btnCarregarCampos)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnLimparCampos)))
+                .addGap(11, 11, 11))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -241,8 +252,8 @@ public class telaEmprestimo extends javax.swing.JFrame {
                         .addComponent(txtDataDevolucao, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
+                    .addComponent(btnCarregarCampos)
+                    .addComponent(btnLimparCampos))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -250,8 +261,8 @@ public class telaEmprestimo extends javax.swing.JFrame {
                         .addGap(26, 26, 26)
                         .addComponent(btnFinalizarEmprestimo)
                         .addGap(82, 82, 82))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnVoltarAoMenu)
                         .addGap(49, 49, 49))))
         );
@@ -292,17 +303,26 @@ public class telaEmprestimo extends javax.swing.JFrame {
     }//GEN-LAST:event_txtCodigoLeitorKeyTyped
 
     private void btnFinalizarEmprestimoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFinalizarEmprestimoActionPerformed
-       createEmprestimo();
-       listarEmprestimos();
+        createEmprestimo();
+        listarEmprestimos();
+        LimparCampos();
     }//GEN-LAST:event_btnFinalizarEmprestimoActionPerformed
 
     private void btnVoltarAoMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarAoMenuActionPerformed
         menuOpcoes opcoes = new menuOpcoes();
-        
+
         opcoes.setVisible(true);
-        
+
         dispose();
     }//GEN-LAST:event_btnVoltarAoMenuActionPerformed
+
+    private void btnLimparCamposActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparCamposActionPerformed
+        LimparCampos();
+    }//GEN-LAST:event_btnLimparCamposActionPerformed
+
+    private void btnCarregarCamposActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCarregarCamposActionPerformed
+        carregarCampos();
+    }//GEN-LAST:event_btnCarregarCamposActionPerformed
 
     /**
      * @param args the command line arguments
@@ -339,15 +359,15 @@ public class telaEmprestimo extends javax.swing.JFrame {
         });
     }
 
-    private void listarEmprestimos (){
+    private void listarEmprestimos() {
         try {
             EmprestimoBiblioteca emprestimoBiblioteca = new EmprestimoBiblioteca();
-            
+
             DefaultTableModel model = (DefaultTableModel) tabelaEmprestimo.getModel();
-            
+
             model.setNumRows(0);
-            
-            for(Emprestimo emprestimo : emprestimoBiblioteca.mostraEmprestimos()){
+
+            for (Emprestimo emprestimo : emprestimoBiblioteca.mostraEmprestimos()) {
                 model.addRow(new Object[]{
                     emprestimo.getId_emprestimo(),
                     emprestimo.getNome_leitor(),
@@ -358,40 +378,72 @@ public class telaEmprestimo extends javax.swing.JFrame {
                     emprestimo.getId_livro()
                 });
             }
-            
+
             emprestimoBiblioteca.mostraEmprestimos();
-            
+
         } catch (Exception e) {
             System.out.println("Erro " + e);
         }
     }
-    
-    private void createEmprestimo(){
-         EmprestimoBiblioteca emprestimoBiblioteca = new EmprestimoBiblioteca();
+
+    private void createEmprestimo() {
+        EmprestimoBiblioteca emprestimoBiblioteca = new EmprestimoBiblioteca();
         Emprestimo emprestimo = new Emprestimo();
-        
+
         String nomeLeitor = txtNomeLeitor.getText();
         String nomeLivro = txtNomeLivro.getText();
         String data_devolucao = txtDataDevolucao.getText();
         String data_emprestimo = txtDataEmprestimo.getText();
         int id_leitor = Integer.parseInt(txtCodigoLeitor.getText());
         int id_livro = Integer.parseInt(txtCodigoLeitor.getText());
-        
+
         emprestimo.setId_livro(id_livro);
         emprestimo.setData_emprestimo(data_emprestimo);
         emprestimo.setData_devolucao(data_devolucao);
         emprestimo.setId_leitor(id_leitor);
         emprestimo.setNome_livro(nomeLivro);
         emprestimo.setNome_leitor(nomeLeitor);
-        
+
         emprestimoBiblioteca.createEmprestimo(emprestimo);
     }
-    
+
+    private void carregarCampos() {
+        try {
+            int linhaSelecionada = tabelaEmprestimo.getSelectedRow();
+
+            if (linhaSelecionada < 0) {
+                JOptionPane.showMessageDialog(null, "Por favor, selecione uma linha");
+            } else {
+               txtCodigoEmprestimo.setText(tabelaEmprestimo.getModel().getValueAt(linhaSelecionada, 0).toString());
+               txtNomeLeitor.setText(tabelaEmprestimo.getModel().getValueAt(linhaSelecionada, 1).toString());
+               txtNomeLivro.setText(tabelaEmprestimo.getModel().getValueAt(linhaSelecionada,2).toString());
+               txtDataEmprestimo.setText(tabelaEmprestimo.getModel().getValueAt(linhaSelecionada, 3).toString());
+               txtCodigoLivro.setText(tabelaEmprestimo.getModel().getValueAt(linhaSelecionada, 4).toString());
+               txtCodigoLeitor.setText(tabelaEmprestimo.getModel().getValueAt(linhaSelecionada, 5).toString());
+               txtDataDevolucao.setText(tabelaEmprestimo.getModel().getValueAt(linhaSelecionada, 6).toString());
+            }
+        } catch (Exception e) {
+            System.out.println("Erro ao carregar campos: " + e);
+        }
+
+    }
+
+    private void LimparCampos() {
+        txtCodigoEmprestimo.setText("");
+        txtCodigoLeitor.setText("");
+        txtDataDevolucao.setText("");
+        txtDataEmprestimo.setText("");
+        txtNomeLeitor.setText("");
+        txtNomeLivro.setText("");
+        txtCodigoLivro.setText("");
+        txtNomeLeitor.requestFocus();
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnCarregarCampos;
     private javax.swing.JToggleButton btnFinalizarEmprestimo;
+    private javax.swing.JButton btnLimparCampos;
     private javax.swing.JToggleButton btnVoltarAoMenu;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

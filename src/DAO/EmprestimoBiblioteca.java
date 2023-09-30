@@ -10,7 +10,7 @@ import java.util.List;
 
 public class EmprestimoBiblioteca {
     public void createEmprestimo(Emprestimo emprestimo){
-       String sql = "INSERT INTO emprestimos (nome_livro, nome_leitor,data_emprestimo, data_devolucao, id_livro, id_leitor)";
+       String sql = "INSERT INTO emprestimos (nome_livro, nome_leitor,data_emprestimo, data_devolucao, id_livro, id_leitor) VALUES (?,?,?,?,?,?)";
        
        Connection connection = null;
        PreparedStatement preparedStatement = null;
