@@ -12,7 +12,7 @@ public class LivroBiblioteca {
 
     public void create(Livros livros) {
 
-        String sql = "INSERT INTO livros (titulo, autor, genero , data_cadastro, ano_publicacao, editora, id_bloco) VALUES (?,?,?,?,?,?,?)";
+        String sql = "INSERT INTO livros (titulo, autor, genero , data_cadastro, ano_publicacao, editora, sessao) VALUES (?,?,?,?,?,?,?)";
 
         Connection connection = null;
         PreparedStatement preparedStatement = null;
@@ -21,13 +21,13 @@ public class LivroBiblioteca {
             connection = CONEXAO.Conexao.createConnectionMySQL();
             preparedStatement = connection.prepareStatement(sql);
 
-            preparedStatement.setString(1, livros.getTitulo_livro());
-            preparedStatement.setString(2, livros.getAutor_livro());
+            preparedStatement.setString(1, livros.getTitulo());
+            preparedStatement.setString(2, livros.getAutor());
             preparedStatement.setString(3, livros.getGenero());
             preparedStatement.setString(4, livros.getData_cadastro());
             preparedStatement.setInt(5, livros.getAnoPublicacao());
             preparedStatement.setString(6, livros.getEditora());
-            preparedStatement.setInt(7, livros.getBloco());
+            preparedStatement.setString(7, livros.getSessao());
 
             preparedStatement.execute();
 
@@ -54,13 +54,13 @@ public class LivroBiblioteca {
                 Livros livros = new Livros();
 
                 livros.setId_livro(resultSet.getInt("id_livro"));
-                livros.setTitulo_livro(resultSet.getString("titulo"));
-                livros.setAutor_livro(resultSet.getString("autor"));
+                livros.setTitulo(resultSet.getString("titulo"));
+                livros.setAutor(resultSet.getString("autor"));
                 livros.setGenero(resultSet.getString("genero"));
                 livros.setData_cadastro(resultSet.getString("data_cadastro"));
                 livros.setAnoPublicacao(resultSet.getInt("ano_publicacao"));
                 livros.setEditora(resultSet.getString("editora"));
-                livros.setBloco(resultSet.getInt("id_bloco"));
+                livros.setSessao(resultSet.getString("sessao"));
 
                 todosLivros.add(livros);
             }
@@ -73,7 +73,7 @@ public class LivroBiblioteca {
     }
 
     public void AtualizarLivros(Livros livros) {
-        String sql = "UPDATE livros SET titulo = ?, autor = ?, genero = ? ,data_cadastro=?, ano_publicacao=?, editora=?, id_bloco=? WHERE id_livro=?";
+        String sql = "UPDATE livros SET titulo = ?, autor = ?, genero = ? ,data_cadastro=?, ano_publicacao=?, editora=?, sessao=? WHERE id_livro=?";
 
         Connection connection = null;
         PreparedStatement preparedStatement = null;
@@ -82,13 +82,13 @@ public class LivroBiblioteca {
             connection = CONEXAO.Conexao.createConnectionMySQL();
             preparedStatement = connection.prepareStatement(sql);
 
-            preparedStatement.setString(1, livros.getTitulo_livro());
-            preparedStatement.setString(2, livros.getAutor_livro());
+            preparedStatement.setString(1, livros.getTitulo());
+            preparedStatement.setString(2, livros.getAutor());
             preparedStatement.setString(3, livros.getGenero());
             preparedStatement.setString(4, livros.getData_cadastro());
             preparedStatement.setInt(5, livros.getAnoPublicacao());
             preparedStatement.setString(6, livros.getEditora());
-            preparedStatement.setInt(7, livros.getBloco());
+            preparedStatement.setString(7, livros.getSessao());
 
             preparedStatement.setInt(8, livros.getId_livro());
 

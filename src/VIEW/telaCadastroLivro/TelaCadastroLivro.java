@@ -30,7 +30,7 @@ public class TelaCadastroLivro extends javax.swing.JFrame {
         txtAnoPublicacao = new javax.swing.JTextField();
         txtDataCadastro = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        txtBloco = new javax.swing.JTextField();
+        txtSessao = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         txtEditora = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
@@ -85,16 +85,11 @@ public class TelaCadastroLivro extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("Liberation Sans", 0, 24)); // NOI18N
         jLabel5.setText("Data de cadastro");
 
-        txtBloco.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
-        txtBloco.setMargin(new java.awt.Insets(2, 12, 2, 6));
-        txtBloco.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtBlocoKeyTyped(evt);
-            }
-        });
+        txtSessao.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
+        txtSessao.setMargin(new java.awt.Insets(2, 12, 2, 6));
 
         jLabel6.setFont(new java.awt.Font("Liberation Sans", 0, 24)); // NOI18N
-        jLabel6.setText("Bloco");
+        jLabel6.setText("Sessão");
 
         txtEditora.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
         txtEditora.setMargin(new java.awt.Insets(2, 12, 2, 6));
@@ -238,7 +233,7 @@ public class TelaCadastroLivro extends javax.swing.JFrame {
                                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                                 .addGroup(jPanel1Layout.createSequentialGroup()
                                                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                        .addComponent(txtBloco, javax.swing.GroupLayout.PREFERRED_SIZE, 341, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addComponent(txtSessao, javax.swing.GroupLayout.PREFERRED_SIZE, 341, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                         .addComponent(jLabel6)
                                                         .addComponent(jLabel7))
                                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -281,7 +276,7 @@ public class TelaCadastroLivro extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel6)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtBloco, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txtSessao, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel5)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -396,15 +391,6 @@ public class TelaCadastroLivro extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_txtAnoPublicacaoKeyTyped
 
-    private void txtBlocoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBlocoKeyTyped
-        // TODO add your handling code here:
-        String numeros = "0123456789";
-        if (!numeros.contains(evt.getKeyChar() + "")) {
-            evt.consume();
-
-        }
-    }//GEN-LAST:event_txtBlocoKeyTyped
-
     /**
      * @param args the command line arguments
      */
@@ -423,15 +409,15 @@ public class TelaCadastroLivro extends javax.swing.JFrame {
         String autorLivro = txtAutorLivro.getText();
         String editora = txtEditora.getText();
         String genero = txtGenero.getText();
-        int bloco = Integer.parseInt(txtBloco.getText());
+        String sessao = txtSessao.getText();
         String dataCadastro = txtDataCadastro.getText();
         int anoPublicacao = Integer.parseInt(txtAnoPublicacao.getText());
 
-        livros.setTitulo_livro(tituloLivro);
-        livros.setAutor_livro(autorLivro);
+        livros.setTitulo(tituloLivro);
+        livros.setAutor(autorLivro);
         livros.setGenero(genero);
         livros.setEditora(editora);
-        livros.setBloco(bloco);
+        livros.setSessao(sessao);
         livros.setData_cadastro(dataCadastro);
         livros.setAnoPublicacao(anoPublicacao);
 
@@ -459,13 +445,13 @@ public class TelaCadastroLivro extends javax.swing.JFrame {
             for (Livros livroBibliotecaLivro : livroBiblioteca.mostrarLivros()) {
                 model.addRow(new Object[]{
                     livroBibliotecaLivro.getId_livro(),
-                    livroBibliotecaLivro.getTitulo_livro(),
-                    livroBibliotecaLivro.getAutor_livro(),
+                    livroBibliotecaLivro.getTitulo(),
+                    livroBibliotecaLivro.getAutor(),
                     livroBibliotecaLivro.getGenero(),
                     livroBibliotecaLivro.getData_cadastro(),
                     livroBibliotecaLivro.getAnoPublicacao(),
                     livroBibliotecaLivro.getEditora(),
-                    livroBibliotecaLivro.getBloco()
+                    livroBibliotecaLivro.getSessao()
                 });
             }
 
@@ -490,7 +476,7 @@ public class TelaCadastroLivro extends javax.swing.JFrame {
             txtDataCadastro.setText(tabelaLivros.getModel().getValueAt(setar, 4).toString());
             txtAnoPublicacao.setText(tabelaLivros.getModel().getValueAt(setar, 5).toString());
             txtEditora.setText(tabelaLivros.getModel().getValueAt(setar, 6).toString());
-            txtBloco.setText(tabelaLivros.getModel().getValueAt(setar, 7).toString());
+            txtSessao.setText(tabelaLivros.getModel().getValueAt(setar, 7).toString());
         }
     }
 
@@ -502,13 +488,14 @@ public class TelaCadastroLivro extends javax.swing.JFrame {
         txtDataCadastro.setText("");
         txtAnoPublicacao.setText("");
         txtEditora.setText("");
-        txtBloco.setText("");
+        txtSessao.setText("");
         txtTituloLivro.requestFocus();
+        
     }
 
     private void atualizarLivro() {
-        int id_livro, anoPublicacao, id_bloco;
-        String titulo, autor, dataCadastro, editora, genero;
+        int id_livro, anoPublicacao;
+        String titulo, autor, dataCadastro, editora, genero, sessao;
 
         id_livro = Integer.parseInt(txtCodigo.getText());
         titulo = txtTituloLivro.getText();
@@ -517,18 +504,18 @@ public class TelaCadastroLivro extends javax.swing.JFrame {
         dataCadastro = txtDataCadastro.getText();
         anoPublicacao = Integer.parseInt(txtAnoPublicacao.getText());
         editora = txtEditora.getText();
-        id_bloco = Integer.parseInt(txtBloco.getText());
+        sessao = txtSessao.getText();
 
         Livros livros = new Livros();
         livros.setId_livro(id_livro);
 
-        livros.setTitulo_livro(titulo);
-        livros.setAutor_livro(autor);
+        livros.setTitulo(titulo);
+        livros.setAutor(autor);
         livros.setGenero(genero);
         livros.setData_cadastro(dataCadastro);
         livros.setAnoPublicacao(anoPublicacao);
         livros.setEditora(editora);
-        livros.setBloco(id_bloco);
+        livros.setSessao(sessao);
 
         LivroBiblioteca livroBiblioteca = new LivroBiblioteca();
         livroBiblioteca.AtualizarLivros(livros);
@@ -569,11 +556,11 @@ public class TelaCadastroLivro extends javax.swing.JFrame {
     private javax.swing.JTable tabelaLivros;
     private javax.swing.JTextField txtAnoPublicacao;
     private javax.swing.JTextField txtAutorLivro;
-    private javax.swing.JTextField txtBloco;
     private javax.swing.JTextField txtCodigo;
     private javax.swing.JTextField txtDataCadastro;
     private javax.swing.JTextField txtEditora;
     private javax.swing.JTextField txtGenero;
+    private javax.swing.JTextField txtSessao;
     private javax.swing.JTextField txtTituloLivro;
     // End of variables declaration//GEN-END:variables
 }
